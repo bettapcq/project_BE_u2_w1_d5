@@ -15,7 +15,8 @@ public class Prenotazione {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Setter(AccessLevel.NONE)
-    private Long id_prenotazione;
+    @Column(name = "id_prenotazione")
+    private Long idPrenotazione;
     @ManyToOne
     @JoinColumn(name = "id_utente")
     private Utente utente;

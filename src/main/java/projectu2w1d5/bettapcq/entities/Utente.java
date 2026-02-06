@@ -13,12 +13,17 @@ public class Utente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Setter(AccessLevel.NONE)
-    private Long id_utente;
+    @Column(name = "id_utente")
+    private Long idUtente;
     @Column(nullable = false)
     private String username;
     private String nome_completo;
     @Column(nullable = false)
     private String email;
 
-
+    public Utente(String username, String nome_completo, String email) {
+        this.username = username;
+        this.nome_completo = nome_completo;
+        this.email = email;
+    }
 }

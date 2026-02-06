@@ -15,7 +15,8 @@ public class Postazione {
     @Id
     @GeneratedValue
     @Setter(AccessLevel.NONE)
-    private UUID uuid_postazione;
+    @Column(name = "uuid_postazione")
+    private UUID uuidPostazione;
     @Enumerated(EnumType.STRING)
     private TipoPostazione tipo;
     private String descrizione;

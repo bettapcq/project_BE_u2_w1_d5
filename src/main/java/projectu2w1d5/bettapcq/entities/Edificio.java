@@ -13,7 +13,8 @@ public class Edificio {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Setter(AccessLevel.NONE)
-    private Long id_edificio;
+    @Column(name = "id_edificio")
+    private Long idEdificio;
 
     private String nome;
     private String indirizzo;
