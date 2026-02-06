@@ -8,4 +8,6 @@ import projectu2w1d5.bettapcq.entities.Edificio;
 public interface EdificiRepository extends JpaRepository<Edificio, Long> {
     boolean existsByNome(String nome);
 
+    boolean existsByIdEdificio(Long idEdificio);
+
 }

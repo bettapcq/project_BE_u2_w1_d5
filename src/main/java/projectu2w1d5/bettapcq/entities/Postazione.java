@@ -13,10 +13,12 @@ import java.util.UUID;
 @ToString
 public class Postazione {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Setter(AccessLevel.NONE)
-    @Column(name = "uuid_postazione")
-    private UUID uuidPostazione;
+    @Column(name = "id_postazione")
+    private Long idPostazione;
+    @Column(name = "codice_univoco", nullable = false)
+    private UUID cu;
     @Enumerated(EnumType.STRING)
     private TipoPostazione tipo;
     private String descrizione;
@@ -25,7 +27,8 @@ public class Postazione {
     @JoinColumn(name = "id_edificio", nullable = false)
     private Edificio edificio;
 
-    public Postazione(TipoPostazione tipo, String descrizione, int num_max_occupanti, Edificio edificio) {
+    public Postazione(UUID cu, TipoPostazione tipo, String descrizione, int num_max_occupanti, Edificio edificio) {
+        this.cu = cu;
         this.tipo = tipo;
         this.descrizione = descrizione;
         this.num_max_occupanti = num_max_occupanti;

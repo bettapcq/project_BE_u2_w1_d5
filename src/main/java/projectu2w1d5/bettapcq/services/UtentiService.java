@@ -17,7 +17,7 @@ public class UtentiService {
     }
 
     public void addUtente(Utente nuovoUtente) {
-        //1. check nome già in uso
+        //1. check username già in uso
         if (utentiRepository.existsByUsername(nuovoUtente.getUsername()))
             throw new ValidationException("L'utente " + nuovoUtente.getUsername() + " è già esistente");
         this.utentiRepository.save(nuovoUtente);
