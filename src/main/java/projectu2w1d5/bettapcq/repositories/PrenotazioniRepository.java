@@ -10,4 +10,5 @@ import java.time.LocalDate;
 @Repository
 public interface PrenotazioniRepository extends JpaRepository<Prenotazione, Long> {
     boolean existsByDataAndPostazione(LocalDate data, Postazione postazione);
+
 }

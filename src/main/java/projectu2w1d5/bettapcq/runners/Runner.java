@@ -47,6 +47,10 @@ public class Runner implements CommandLineRunner {
 //        postazioniService.addPostazione(faker.number().numberBetween(1, 7), UUID.fromString(uuid2), TipoPostazione.PRIVATO, faker.lorem().characters(30), faker.number().numberBetween(1, 4));
 //        postazioniService.addPostazione(faker.number().numberBetween(1, 7), UUID.fromString(uuid3), TipoPostazione.SALA_RIUNIONI, faker.lorem().characters(30), faker.number().numberBetween(1, 20));
 
+        //run per aggiungewre prenotazioni:
+//        prenotazioniService.addPrenotazione(1L, 3L, LocalDate.of(2026, 2, 9));
+//        prenotazioniService.addPrenotazione(4L, 1L, LocalDate.of(2026, 5, 25));
+
         try {
 //       ok     Edificio edificioFromDB = edificiService.findById(3L);
 //            log.info(edificioFromDB.toString());
