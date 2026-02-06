@@ -11,7 +11,6 @@ import projectu2w1d5.bettapcq.services.PostazioniService;
 import projectu2w1d5.bettapcq.services.PrenotazioniService;
 import projectu2w1d5.bettapcq.services.UtentiService;
 
-import java.time.LocalDate;
 import java.util.Locale;
 
 @Component
@@ -64,8 +63,16 @@ public class Runner implements CommandLineRunner {
 //             listaPostazioniTipoCittà.forEach(postazione -> log.info(postazione.toString()));
 //       ok    boolean prenotazioneOccupata = prenotazioniService.existingByDataAndPostazione(LocalDate.of(2025, 5, 26), postazioneFromDB);
 //             log.info("Prenotazione occupata: " + String.valueOf(prenotazioneOccupata));
+//     ok       //prova exceptions:
+//            Postazione postazioneFromDB = postazioniService.findById(7L);
+//            Utente utenteFromDB = utentiService.findById(32L);
+//            Edificio edificioFromDB = edificiService.findById(30L);
+//            Postazione postazioneFromDB = postazioniService.findById(10L);
+
             try {
-                prenotazioniService.addPrenotazione(2L, 2L, LocalDate.of(2026, 04, 17));
+//   ok             prenotazioniService.addPrenotazione(2L, 2L, LocalDate.of(2026, 04, 17));
+//   ok           //prova exception:
+//                prenotazioniService.addPrenotazione(3L, 2L, LocalDate.of(2026, 04, 17));
             } catch (NotAvailablePlaceException ex) {
                 log.error(ex.getMessage());
             }
