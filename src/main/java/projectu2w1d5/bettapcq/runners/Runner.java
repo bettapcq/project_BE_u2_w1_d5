@@ -4,12 +4,14 @@ import com.github.javafaker.Faker;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+import projectu2w1d5.bettapcq.exceptions.NotAvailablePlaceException;
 import projectu2w1d5.bettapcq.exceptions.NotFoundException;
 import projectu2w1d5.bettapcq.services.EdificiService;
 import projectu2w1d5.bettapcq.services.PostazioniService;
 import projectu2w1d5.bettapcq.services.PrenotazioniService;
 import projectu2w1d5.bettapcq.services.UtentiService;
 
+import java.time.LocalDate;
 import java.util.Locale;
 
 @Component
@@ -53,14 +55,20 @@ public class Runner implements CommandLineRunner {
 
         try {
 //       ok     Edificio edificioFromDB = edificiService.findById(3L);
-//            log.info(edificioFromDB.toString());
-//       ok    Utente utenteFromDB = utentiService.findById(3L);
-//            log.info(utenteFromDB.toString());
-//       ok     Postazione postazioneFromDB = postazioniService.findById(4L);
-//            log.info(postazioneFromDB.toString());
-//       ok     List<Postazione> listaPostazioniTipoCittà = postazioniService.findByTipoAndCittà(TipoPostazione.PRIVATO, "Barbieri umbro");
-//            listaPostazioniTipoCittà.forEach(postazione -> log.info(postazione.toString()));
-
+//              log.info(edificioFromDB.toString());
+//       ok     Utente utenteFromDB = utentiService.findById(3L);
+//             log.info(utenteFromDB.toString());
+//             Postazione postazioneFromDB = postazioniService.findById(4L);
+//             log.info(postazioneFromDB.toString());
+//       ok    List<Postazione> listaPostazioniTipoCittà = postazioniService.findByTipoAndCittà(TipoPostazione.PRIVATO, "Barbieri umbro");
+//             listaPostazioniTipoCittà.forEach(postazione -> log.info(postazione.toString()));
+//       ok    boolean prenotazioneOccupata = prenotazioniService.existingByDataAndPostazione(LocalDate.of(2025, 5, 26), postazioneFromDB);
+//             log.info("Prenotazione occupata: " + String.valueOf(prenotazioneOccupata));
+            try {
+                prenotazioniService.addPrenotazione(2L, 2L, LocalDate.of(2026, 04, 17));
+            } catch (NotAvailablePlaceException ex) {
+                log.error(ex.getMessage());
+            }
 
         } catch (NotFoundException ex) {
             log.error(ex.getMessage());

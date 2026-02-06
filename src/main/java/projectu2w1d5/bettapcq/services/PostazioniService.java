@@ -8,6 +8,7 @@ import projectu2w1d5.bettapcq.entities.TipoPostazione;
 import projectu2w1d5.bettapcq.exceptions.NotFoundException;
 import projectu2w1d5.bettapcq.exceptions.ValidationException;
 import projectu2w1d5.bettapcq.repositories.PostazioniRepository;
+import projectu2w1d5.bettapcq.repositories.PrenotazioniRepository;
 
 import java.util.List;
 import java.util.UUID;
@@ -18,10 +19,12 @@ public class PostazioniService {
 
     private final PostazioniRepository postazioniRepository;
     private final EdificiService edificiService;
+    private final PrenotazioniRepository prenotazioniRepository;
 
-    public PostazioniService(PostazioniRepository postazioniRepository, EdificiService edificiService) {
+    public PostazioniService(PostazioniRepository postazioniRepository, EdificiService edificiService, PrenotazioniRepository prenotazioniRepository) {
         this.postazioniRepository = postazioniRepository;
         this.edificiService = edificiService;
+        this.prenotazioniRepository = prenotazioniRepository;
     }
 
     public void addPostazione(long idEdificio, UUID cuPostazione, TipoPostazione tipo, String descrizione, int num_max_occupanti) {

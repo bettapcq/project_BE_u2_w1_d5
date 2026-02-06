@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import projectu2w1d5.bettapcq.entities.Postazione;
 import projectu2w1d5.bettapcq.entities.Prenotazione;
 import projectu2w1d5.bettapcq.entities.Utente;
+import projectu2w1d5.bettapcq.exceptions.NotAvailablePlaceException;
 import projectu2w1d5.bettapcq.exceptions.NotFoundException;
 import projectu2w1d5.bettapcq.repositories.PrenotazioniRepository;
 
@@ -32,6 +33,9 @@ public class PrenotazioniService {
         if (utenteFromDB == null) throw new NotFoundException("Utente non trovato");
         if (postazioneFromDB == null) throw new NotFoundException("Postazione non trovata");
 
+        //check postazione già occupata in quella data:
+        boolean occupata = prenotazioniRepository.existsByDataAndPostazione(data, postazioneFromDB);
+        if (occupata) throw new NotAvailablePlaceException(idPostazione, data);
 
         //Prenotazione(Utente utente, Postazione postazione, LocalDate data)
         Prenotazione nuovaPrenotazione = new Prenotazione(utenteFromDB, postazioneFromDB, data);
@@ -40,6 +44,10 @@ public class PrenotazioniService {
         prenotazioniRepository.save(nuovaPrenotazione);
 
         log.info("Prenotazione salvata con id: " + nuovaPrenotazione.getIdPrenotazione());
+    }
+
+    public boolean existingByDataAndPostazione(LocalDate data, Postazione postazione) {
+        return prenotazioniRepository.existsByDataAndPostazione(data, postazione);
     }
 
 
