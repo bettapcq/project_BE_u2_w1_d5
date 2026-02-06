@@ -10,4 +10,5 @@ public interface EdificiRepository extends JpaRepository<Edificio, Long> {
 
     boolean existsByIdEdificio(Long idEdificio);
 
+
 }

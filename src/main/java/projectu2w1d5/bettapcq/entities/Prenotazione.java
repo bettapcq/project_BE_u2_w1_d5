@@ -22,7 +22,7 @@ public class Prenotazione {
     private Utente utente;
 
     @ManyToOne
-    @JoinColumn(name = "uuid_postazione")
+    @JoinColumn(name = "id_postazione")
     private Postazione postazione;
 
     private LocalDate data;

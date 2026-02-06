@@ -17,6 +17,7 @@ public class Postazione {
     @Setter(AccessLevel.NONE)
     @Column(name = "id_postazione")
     private Long idPostazione;
+    
     @Column(name = "codice_univoco", nullable = false)
     private UUID cu;
     @Enumerated(EnumType.STRING)

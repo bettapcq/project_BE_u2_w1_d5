@@ -5,9 +5,11 @@ import org.springframework.stereotype.Service;
 import projectu2w1d5.bettapcq.entities.Edificio;
 import projectu2w1d5.bettapcq.entities.Postazione;
 import projectu2w1d5.bettapcq.entities.TipoPostazione;
+import projectu2w1d5.bettapcq.exceptions.NotFoundException;
 import projectu2w1d5.bettapcq.exceptions.ValidationException;
 import projectu2w1d5.bettapcq.repositories.PostazioniRepository;
 
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -31,5 +33,15 @@ public class PostazioniService {
 
         this.postazioniRepository.save(nuovaPostazione);
         log.info("La postazione è stata salvata con id: " + nuovaPostazione.getIdPostazione());
+    }
+
+    public Postazione findById(long idPostazione) {
+
+        return postazioniRepository.findById(idPostazione).orElseThrow(() -> new NotFoundException("Postazione non trovata"));
+    }
+
+    public List<Postazione> findByTipoAndCittà(TipoPostazione tipo, String città) {
+        return postazioniRepository.findByTipoAndCittà(tipo, città);
+
     }
 }
